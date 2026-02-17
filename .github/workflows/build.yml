@@ -40,10 +40,10 @@ jobs:
 
       - name: Archive test reports
         if: always()
-        uses: **actions/upload-artifact@v4**  # ← Исправлено: v4 вместо v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
-          path: |
+          path: |                # ← строка 43: правильный многострочный синтаксис
             build/reports/tests/test/
             build/test-results/test/
           retention-days: 7
@@ -52,7 +52,7 @@ jobs:
         run: ./gradlew jar --no-daemon
 
       - name: Upload application artifact
-        uses: **actions/upload-artifact@v4**  # ← Исправлено: v4 вместо v3
+        uses: actions/upload-artifact@v4
         with:
           name: map-app-jar
           path: build/libs/*.jar
